@@ -1,19 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import {
-  Box,
-  Typography,
-  Paper,
-  TextField,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
+import { Box, TextField, Button } from "@mui/material";
 import Scanner from "./Scanner";
+import LinearFieldset from "./common/LinearFieldset";
 
 const BarcodeScanner = () => {
   const [data, setData] = useState<{ value: string }>({ value: "" });
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useState("");
 
   const startHandler = (inputText: string) => {
     if (inputText.trim()) {
@@ -23,10 +15,10 @@ const BarcodeScanner = () => {
     }
     //  router.push(`items/${inputText}/`).then(() => setText("setText"));
   };
-  
+
   const [results, setResults] = useState<string[]>([]);
   const scannerRef = useRef<HTMLDivElement>(null);
-  
+
   const onDetected = (result: string) => {
     console.log("Scanner detected:", result);
     if (result && result !== data.value) {
@@ -45,50 +37,14 @@ const BarcodeScanner = () => {
   }, [results]);
   return (
     <Box sx={{ p: 2 }}>
-      {/* Current scanned code display */}
-      {data.value && (
-        <Paper elevation={2} sx={{ p: 2, mb: 2, bgcolor: "success.light" }}>
-          <Typography variant="h6" color="success.contrastText" gutterBottom>
-            آخرین کد اسکن شده:
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ fontFamily: "monospace", fontSize: "1.2rem" }}
-          >
-            {data.value}
-          </Typography>
-        </Paper>
-      )}
-
-      {/* All scanned results */}
-      {results.length > 0 && (
-        <Paper elevation={1} sx={{ mb: 2 }}>
-          <Typography
-            variant="h6"
-            sx={{ p: 2, borderBottom: 1, borderColor: "divider" }}
-          >
-            تمام کدهای اسکن شده ({results.length})
-          </Typography>
-          <List>
-            {results.map((result, index) => (
-              <ListItem key={index} divider>
-                <ListItemText
-                  primary={result}
-                  secondary={`شماره ${index + 1}`}
-                />
-              </ListItem>
-            ))}
-          </List>
-        </Paper>
-      )}
       {!text && (
         <>
           <Box
             ref={scannerRef}
             sx={{
               position: "relative",
-              border: "3px solid red",
-              borderRadius: 1,
+              border: (theme) => `2px solid ${theme.palette.grey[300]}`,
+              borderRadius: 2,
               overflow: "hidden",
               width: "100%",
               maxWidth: { xs: "320px", sm: "400px", md: "500px" },
@@ -144,13 +100,22 @@ const BarcodeScanner = () => {
         </>
       )}
 
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2, mt: 2 }}>
-        <Typography variant="body1">بارکد دستی:</Typography>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: 2,
+          mt: 2,
+        }}
+      >
+        {!text && <LinearFieldset title="یا بارکد دستی" />}
         <TextField
           value={text}
-          placeholder="نام"
+          placeholder="بارکد خود را وارد نمایید"
           onChange={(e) => setText(e.target.value)}
           size="small"
+          fullWidth
           variant="outlined"
         />
       </Box>
@@ -161,7 +126,7 @@ const BarcodeScanner = () => {
           onClick={() => startHandler(text)}
           sx={{ mt: 2 }}
         >
-          بررسی
+          بررسی بارکد
         </Button>
       )}
     </Box>

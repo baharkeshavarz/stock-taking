@@ -30,25 +30,25 @@ const StockKeeperForm = () => {
     setIsLoading(true);
     setTimeout(() => {
       navigate(DEFAULT_HOME_ROUTE);
-    }, 3000);
+    }, 2000);
   };
 
   return (
     <FormProvider {...methods}>
       <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit(onSubmit)}
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            gap={5}
-            width="100%"
-            mb={2}
+        component="form"
+        noValidate
+        onSubmit={handleSubmit(onSubmit)}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        gap={5}
+        width="100%"
+        mb={2}
       >
         <Stack spacing={2} width="100%">
-        <CustomTextField label="نام انباردار را وارد نمایید." name="name" />
+          <CustomTextField label="نام انباردار را وارد نمایید." name="name" />
           <ButtonWithLoading
             type="submit"
             variant="contained"
@@ -56,7 +56,7 @@ const StockKeeperForm = () => {
             fullWidth
             loading={isLoading}
           >
-             انبارگردانی
+            انبارگردانی
           </ButtonWithLoading>
         </Stack>
       </Box>
