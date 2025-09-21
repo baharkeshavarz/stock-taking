@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import type { StockKeeperPayload } from "src/services/stockkeeper/types";
 import * as yup from "yup";
 import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
@@ -36,30 +36,19 @@ const StockKeeperForm = () => {
   return (
     <FormProvider {...methods}>
       <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-between"
-        width="100%"
-        flex={1}
-        mb={2}
-        component="form"
-        onSubmit={handleSubmit(onSubmit)}
+            component="form"
+            noValidate
+            onSubmit={handleSubmit(onSubmit)}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            gap={5}
+            width="100%"
+            mb={2}
       >
-        <Box
-          width="100%"
-          display="flex"
-          justifyContent="center"
-          justifyItems="center"
-        >
-          <img
-            src="/store-keeping.png"
-            width={220}
-            height={180}
-            alt="اپلیکیشن انبارگردانی هایمارت"
-          />
-        </Box>
-        <Box display="flex" flexDirection="column" gap={2}>
-          <CustomTextField label="نام انباردار را وارد نمایید." name="name" />
+        <Stack spacing={2} width="100%">
+        <CustomTextField label="نام انباردار را وارد نمایید." name="name" />
           <ButtonWithLoading
             type="submit"
             variant="contained"
@@ -67,9 +56,9 @@ const StockKeeperForm = () => {
             fullWidth
             loading={isLoading}
           >
-            شروع انبارگردانی
+             انبارگردانی
           </ButtonWithLoading>
-        </Box>
+        </Stack>
       </Box>
     </FormProvider>
   );

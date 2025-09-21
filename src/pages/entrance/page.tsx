@@ -7,21 +7,25 @@ function Entrance() {
     <Container
       maxWidth="sm"
       sx={{
+        height: "100%", // match parent
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
-        flexShrink: 0,
-        bgcolor: "#fafafaff",
+        alignItems: "center",
+        justifyContent: "space-between",
+        bgcolor: "#fafafa",
         backgroundImage: `linear-gradient(rgba(230, 247, 255, 0.98), rgba(247, 242, 242, 0.92)), url("/stock-background.svg")`,
-        fill: "#eeeeeeff",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        height: "100%",
-        overflow: "hidden",
       }}
     >
-      <Stack sx={{ marginX: "auto", mt: 7 }}>
+      <Stack spacing={4} alignItems="center" pt={4} justifyContent="center" width="100%">
         <HimartLogo showTitle={true} />
+        <img
+            src="/store-keeping.png"
+            width={220}
+            height={180}
+            alt="اپلیکیشن انبارگردانی هایمارت"
+          />
       </Stack>
       <StockKeeperForm />
     </Container>
