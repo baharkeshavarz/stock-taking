@@ -45,7 +45,7 @@ export const inputsCustomizations: Components<Theme> = {
               size: "medium",
             },
             style: {
-              height: "2.5rem", // 40px
+              height: "2rem", // 40px
             },
           },
           {

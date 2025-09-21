@@ -20,7 +20,7 @@ const logoSizeSxMap: Record<LogoSize, SxProps<Theme>> = {
     height: "auto",
   },
   medium: {
-    width: { xs: 116, sm: 140 },
+    width: { xs: 105, sm: 125 },
     height: "auto",
   },
   small: {

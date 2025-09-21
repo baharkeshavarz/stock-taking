@@ -5,7 +5,7 @@ import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CustomTextField } from "src/components/Fields";
 import { useNavigate } from "react-router";
-import { DEFAULT_HOME_ROUTE } from "src/constants";
+import { DEFAULT_SCAN_CODE_ROUTE } from "src/constants";
 import ButtonWithLoading from "src/components/common/ButtonWithLoading";
 import { useState } from "react";
 
@@ -29,7 +29,7 @@ const StockKeeperForm = () => {
   const onSubmit: SubmitHandler<StockKeeperPayload> = async () => {
     setIsLoading(true);
     setTimeout(() => {
-      navigate(DEFAULT_HOME_ROUTE);
+      navigate(DEFAULT_SCAN_CODE_ROUTE);
     }, 2000);
   };
 
@@ -56,7 +56,7 @@ const StockKeeperForm = () => {
             fullWidth
             loading={isLoading}
           >
-            انبارگردانی
+            شروع انبارگردانی
           </ButtonWithLoading>
         </Stack>
       </Box>

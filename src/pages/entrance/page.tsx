@@ -18,14 +18,20 @@ function Entrance() {
         backgroundSize: "cover",
       }}
     >
-      <Stack spacing={4} alignItems="center" pt={4} justifyContent="center" width="100%">
+      <Stack
+        spacing={4}
+        alignItems="center"
+        pt={4}
+        justifyContent="center"
+        width="100%"
+      >
         <HimartLogo showTitle={true} />
         <img
-            src="/store-keeping.png"
-            width={220}
-            height={180}
-            alt="اپلیکیشن انبارگردانی هایمارت"
-          />
+          src="/store-keeping.png"
+          width={220}
+          height={180}
+          alt="اپلیکیشن انبارگردانی هایمارت"
+        />
       </Stack>
       <StockKeeperForm />
     </Container>

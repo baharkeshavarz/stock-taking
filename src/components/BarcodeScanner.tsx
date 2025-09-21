@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { Box, TextField, Button, Typography, Paper } from "@mui/material";
-import { CameraAlt, Stop, PlayArrow } from "@mui/icons-material";
+import { CameraAlt, Stop, PlayArrow, Search } from "@mui/icons-material";
 import Scanner from "./Scanner";
 import LinearFieldset from "./common/LinearFieldset";
+import { useNavigate } from "react-router";
+import { DEFAULT_ITEMS_ROUTE } from "src/constants";
 
 const BarcodeScanner = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState<{ value: string }>({ value: "" });
   const [text, setText] = useState("");
   const [isScanning, setIsScanning] = useState(true);
@@ -42,6 +45,7 @@ const BarcodeScanner = () => {
   const startManualScan = () => {
     if (text.trim()) {
       startHandler(text);
+      navigate(`${DEFAULT_ITEMS_ROUTE}/${text}`);
     }
   };
 
@@ -55,7 +59,10 @@ const BarcodeScanner = () => {
         ref={scannerRef}
         sx={{
           position: "relative",
-          border: (theme) => `2px solid ${isScanning ? theme.palette.primary.main : theme.palette.grey[300]}`,
+          border: (theme) =>
+            `2px solid ${
+              isScanning ? theme.palette.primary.main : theme.palette.grey[300]
+            }`,
           borderRadius: 2,
           overflow: "hidden",
           width: "100%",
@@ -173,7 +180,7 @@ const BarcodeScanner = () => {
           mt: 2,
         }}
       >
-        <LinearFieldset title="یا بارکد دستی" />
+        <LinearFieldset title="جستجو با بارکد دستی" />
         <TextField
           value={text}
           placeholder="بارکد خود را وارد نمایید"
@@ -187,10 +194,10 @@ const BarcodeScanner = () => {
           fullWidth
           onClick={startManualScan}
           disabled={!text.trim()}
-          startIcon={<CameraAlt />}
+          startIcon={<Search />}
           sx={{ mt: 1 }}
         >
-          اسکن دستی
+          جستجو
         </Button>
       </Box>
     </Box>

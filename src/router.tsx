@@ -1,10 +1,11 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
 
-const Entrance = lazy(() => import("./pages/entrance/page"));
-const Home = lazy(() => import("./pages/home/page"));
+const Entrance = lazy(() => import("./pages/Entrance/page"));
+const ScanCode = lazy(() => import("./pages/ScanCode/page"));
 const Layout = lazy(() => import("src/components/Layout"));
 const EntranceLayout = lazy(() => import("src/components/EntranceLayout"));
+const Items = lazy(() => import("./pages/Items/page"));
 
 const router = createBrowserRouter([
   {
@@ -12,12 +13,16 @@ const router = createBrowserRouter([
     Component: Layout,
     children: [
       {
-        path: "/",
-        Component: Home,
+        path: "/scan-code",
+        Component: ScanCode,
+      },
+      {
+        path: "/items/:barcode",
+        Component: Items,
       },
       {
         path: "*",
-        Component: Home,
+        Component: ScanCode,
       },
     ],
   },

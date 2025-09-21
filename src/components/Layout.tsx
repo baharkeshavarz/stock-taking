@@ -1,8 +1,9 @@
 import Box from "@mui/material/Box";
 import { Outlet } from "react-router";
-import BottomNavigationComponent from "src/pages/home/components/BottomNavigationComponent";
-import ToolbarComponent from "src/pages/home/components/ToolbarComponent";
+
 import { Container } from "@mui/material";
+import BottomNavigationComponent from "src/pages/ScanCode/components/BottomNavigationComponent";
+import ToolbarComponent from "src/pages/ScanCode/components/ToolbarComponent";
 
 const Layout = () => {
   return (
