@@ -214,24 +214,24 @@ export const inputsCustomizations: Components<Theme> = {
         letterSpacing: 0,
         color: (theme.vars || theme).palette.text.primary,
         border: "1px solid ",
-        borderColor: gray[200],
-        backgroundColor: alpha(gray[50], 0.3),
+        borderColor: brand[200],
+        backgroundColor: alpha(brand[50], 0.3),
         "&:hover": {
-          backgroundColor: gray[100],
-          borderColor: gray[300],
+          backgroundColor: brand[100],
+          borderColor: brand[300],
         },
         "&:active": {
-          backgroundColor: gray[200],
+          backgroundColor: brand[200],
         },
         ...theme.applyStyles("dark", {
-          backgroundColor: gray[800],
-          borderColor: gray[700],
+          backgroundColor: brand[800],
+          borderColor: brand[700],
           "&:hover": {
-            backgroundColor: gray[900],
-            borderColor: gray[600],
+            backgroundColor: brand[900],
+            borderColor: brand[600],
           },
           "&:active": {
-            backgroundColor: gray[900],
+            backgroundColor: brand[900],
           },
         }),
         variants: [
@@ -412,7 +412,7 @@ export const inputsCustomizations: Components<Theme> = {
   MuiInputAdornment: {
     styleOverrides: {
       root: ({ theme }) => ({
-        color: (theme.vars || theme).palette.grey[500],
+        color: (theme.vars || theme).palette.primary[500],
         ...theme.applyStyles("dark", {
           color: (theme.vars || theme).palette.grey[400],
         }),

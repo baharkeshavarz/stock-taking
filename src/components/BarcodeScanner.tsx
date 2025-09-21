@@ -157,7 +157,7 @@ const BarcodeScanner = () => {
 
       {/* Results Display */}
       {data.value && (
-        <Paper elevation={2} sx={{ p: 2, mb: 2, bgcolor: "success.light" }}>
+        <Paper elevation={2} sx={{ p: 2, my: 2, bgcolor: "success.light" }}>
           <Typography variant="h6" color="success.contrastText" gutterBottom>
             آخرین کد اسکن شده:
           </Typography>

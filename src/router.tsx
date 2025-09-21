@@ -17,7 +17,7 @@ const router = createBrowserRouter([
         Component: ScanCode,
       },
       {
-        path: "/items/:barcode",
+        path: "/products/:barcode",
         Component: Products,
       },
       {

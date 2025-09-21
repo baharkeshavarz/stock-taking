@@ -1,6 +1,6 @@
 import BarcodeScanner from "src/components/BarcodeScanner";
 
-function Home() {
+function BarcodeScannerPage() {
   return (
     <>
       <BarcodeScanner />
@@ -8,4 +8,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default BarcodeScannerPage;
