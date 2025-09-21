@@ -1,5 +1,4 @@
-// @ts-ignore
-import BarcodeScanner from "src/components/BarcodeScanner.jsx";
+import BarcodeScanner from "src/components/BarcodeScanner";
 
 function Home() {
   return (

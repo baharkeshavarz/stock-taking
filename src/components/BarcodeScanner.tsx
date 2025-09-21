@@ -8,23 +8,26 @@ import {
   List,
   ListItem,
   ListItemText,
-  AppBar,
-  Toolbar,
-  Container,
 } from "@mui/material";
-
-import Scanner from ".";
+import Scanner from "./Scanner";
 
 const BarcodeScanner = () => {
-  const [data, setData] = useState({ value: "" });
-  const [text, setText] = useState("");
+  const [data, setData] = useState<{ value: string }>({ value: "" });
+  const [text, setText] = useState<string>("");
 
-  const startHandler = (text) => {
-    //  router.push(`items/${text}/`).then(() => setText("setText"));
+  const startHandler = (inputText: string) => {
+    if (inputText.trim()) {
+      setResults((prev) => [...prev, inputText]);
+      setText("");
+      console.log("Manual barcode entered:", inputText);
+    }
+    //  router.push(`items/${inputText}/`).then(() => setText("setText"));
   };
-  const [results, setResults] = useState([]);
-  const scannerRef = useRef(null);
-  const onDetected = (result) => {
+  
+  const [results, setResults] = useState<string[]>([]);
+  const scannerRef = useRef<HTMLDivElement>(null);
+  
+  const onDetected = (result: string) => {
     console.log("Scanner detected:", result);
     if (result && result !== data.value) {
       setData({ value: result });
@@ -118,9 +121,11 @@ const BarcodeScanner = () => {
             scannerRef={scannerRef}
             onDetected={onDetected}
             onScannerReady={onScannerReady}
+            cameraId={undefined}
+            facingMode="environment"
             constraints={{
-              width: { ideal: 320 },
-              height: { ideal: 240 },
+              width: 320,
+              height: 240,
             }}
             decoders={[
               "code_128_reader",

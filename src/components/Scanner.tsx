@@ -1,7 +1,8 @@
 import { useCallback, useLayoutEffect } from "react";
+import type { RefObject } from "react";
 import Quagga from "@ericblade/quagga2";
 
-function getMedian(arr) {
+function getMedian(arr: number[]): number {
   arr.sort((a, b) => a - b);
   const half = Math.floor(arr.length / 2);
   if (arr.length % 2 === 1) {
@@ -10,12 +11,25 @@ function getMedian(arr) {
   return (arr[half - 1] + arr[half]) / 2;
 }
 
-function getMedianOfCodeErrors(decodedCodes) {
+function getMedianOfCodeErrors(decodedCodes: any[]): number {
   const errors = decodedCodes
-    .filter((x) => x.error !== undefined)
-    .map((x) => x.error);
+    .filter((x: any) => x.error !== undefined)
+    .map((x: any) => x.error);
   const medianOfErrors = getMedian(errors);
   return medianOfErrors;
+}
+
+interface ScannerProps {
+  onDetected: (result: string) => void;
+  scannerRef: RefObject<HTMLDivElement | null>;
+  onScannerReady?: () => void;
+  cameraId?: string;
+  facingMode?: string;
+  constraints?: { width: number; height: number };
+  locator?: { patchSize: string; halfSample: boolean };
+  numOfWorkers?: number;
+  decoders?: string[];
+  locate?: boolean;
 }
 
 const defaultConstraints = {
@@ -30,7 +44,7 @@ const defaultLocatorSettings = {
 
 const defaultDecoders = ["code_128_reader", "ean_reader", "ean_8_reader"];
 
-const Scanner = ({
+const Scanner: React.FC<ScannerProps> = ({
   onDetected,
   scannerRef,
   onScannerReady,
@@ -43,7 +57,7 @@ const Scanner = ({
   locate = true,
 }) => {
   const errorCheck = useCallback(
-    (result) => {
+    (result: any) => {
       if (!onDetected) {
         return;
       }
@@ -68,11 +82,11 @@ const Scanner = ({
             ...(cameraId && { deviceId: cameraId }),
             ...(!cameraId && { facingMode }),
           },
-          target: scannerRef.current,
+          target: scannerRef.current!,
         },
         locator,
         numOfWorkers,
-        decoder: { readers: decoders },
+        decoder: { readers: decoders as any },
         locate,
       },
       (err) => {
