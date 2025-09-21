@@ -9,7 +9,13 @@ const EntranceLayout = () => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
-        height: "100vh",
+        height: "100dvh",
+        overflow: "hidden",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
       }}
     >
       <Outlet />

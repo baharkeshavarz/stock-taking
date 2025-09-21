@@ -67,7 +67,7 @@ const StockKeeperForm = () => {
             fullWidth
             loading={isLoading}
           >
-            آغاز انبارگردانی
+            شروع انبارگردانی
           </ButtonWithLoading>
         </Box>
       </Box>
