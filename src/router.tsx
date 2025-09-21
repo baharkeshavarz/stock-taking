@@ -1,11 +1,11 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
 
-const Entrance = lazy(() => import("./pages/entrance/page"));
-const ScanCode = lazy(() => import("./pages/scancode/page"));
+const Entrance = lazy(() => import("./pages/start/page"));
+const ScanCode = lazy(() => import("./pages/newscan/page"));
 const Layout = lazy(() => import("src/components/Layout"));
 const EntranceLayout = lazy(() => import("src/components/EntranceLayout"));
-const Items = lazy(() => import("./pages/items/page"));
+const Products = lazy(() => import("./pages/products/page"));
 
 const router = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/items/:barcode",
-        Component: Items,
+        Component: Products,
       },
       {
         path: "*",
