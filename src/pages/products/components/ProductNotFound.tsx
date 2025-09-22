@@ -1,4 +1,4 @@
-import { Box, Typography, Button, Stack, alpha } from "@mui/material";
+import { Box, Typography, Button, Stack } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { useNavigate } from "react-router";
 import { DEFAULT_SCAN_CODE_ROUTE } from "src/constants";
