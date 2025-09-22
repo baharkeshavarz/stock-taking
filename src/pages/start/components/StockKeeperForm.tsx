@@ -1,5 +1,5 @@
 import { Box, Stack } from "@mui/material";
-import type { StockKeeperPayload } from "src/services/stockkeeper/types";
+import type { StockKeeperPayload } from "src/services/products/types";
 import * as yup from "yup";
 import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
