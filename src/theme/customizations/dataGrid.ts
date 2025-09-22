@@ -35,8 +35,8 @@ export const dataGridCustomizations: DataGridProComponents<Theme> &
         [`& .${tablePaginationClasses.root}`]: {
           marginRight: theme.spacing(1),
           "& .MuiIconButton-root": {
-            maxHeight: 32,
-            maxWidth: 32,
+            maxHeight: 24,
+            maxWidth: 24,
             "& > svg": {
               fontSize: "1rem",
             },

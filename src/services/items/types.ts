@@ -42,10 +42,19 @@ export interface IProductItems {
   currentInventory: string;
 }
 
+export interface IProductItemRemovePayload {
+  stockTakingItemId: number;
+  operator: string;
+}
+
 export interface GetProductItemsByBarcodeService {
   (args: { params: IBarcode }): Response<IProductItems>;
 }
 
 export interface AddProductService {
   (args: { payload: IAddProduct }): Response<Basic>;
+}
+
+export interface RemoveProductService {
+  (args: { payload: IProductItemRemovePayload }): Response<Basic>;
 }

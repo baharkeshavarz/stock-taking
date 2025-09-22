@@ -10,6 +10,7 @@ import ThemeProvider from "./theme/ThemeProvider";
 import i18nInstance from "./i18n/i18n";
 import { persister, store } from "./store";
 import { Toaster } from "react-hot-toast";
+import ConfirmProvider from "./providers/ConfirmProvider";
 
 function App() {
   return (
@@ -19,10 +20,12 @@ function App() {
           <TanstackProvider>
             <LanguageProvider>
               <ThemeProvider>
-                <RTLProvider>
-                  <Toaster />
-                  <RouterProvider router={router} />
-                </RTLProvider>
+                <ConfirmProvider>
+                  <RTLProvider>
+                    <Toaster />
+                    <RouterProvider router={router} />
+                  </RTLProvider>
+                </ConfirmProvider>
               </ThemeProvider>
             </LanguageProvider>
           </TanstackProvider>

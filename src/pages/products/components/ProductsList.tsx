@@ -8,15 +8,36 @@ import {
   CircularProgress,
   Box,
   Chip,
+  IconButton,
 } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useMutation } from "@tanstack/react-query";
+import { removeProduct } from "src/services/items";
+import type { IProductItem } from "src/services/items/types";
+import { useConfirm } from "material-ui-confirm";
 
 type ProductsListProps = {
   barcode: string;
 };
 
 const ProductsList: FC<ProductsListProps> = ({ barcode }) => {
+  const confirm = useConfirm();
   const { data, isPending, isError } = useGetItemsByBarcode(barcode);
-  console.log(data);
+  const { mutateAsync } = useMutation({
+    mutationFn: removeProduct,
+  });
+
+  const handleDelete = async (item: IProductItem) => {
+    console.log(item);
+    confirm().then(async () => {
+      await mutateAsync({
+        payload: {
+          stockTakingItemId: item.stockTakingId,
+          operator: item.operator,
+        },
+      });
+    });
+  };
 
   if (isPending) {
     return (
@@ -34,7 +55,7 @@ const ProductsList: FC<ProductsListProps> = ({ barcode }) => {
     );
   }
 
-  if (!data?.data?.items || data?.data?.items?.length === 0) {
+  if (!data?.data?.items || data?.data?.items.length === 0) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" p={4}>
         <Typography>هیچ آیتمی برای این بارکد یافت نشد</Typography>
@@ -43,25 +64,44 @@ const ProductsList: FC<ProductsListProps> = ({ barcode }) => {
   }
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={1}>
       <Grid size={{ xs: 12 }}>
-        <Typography variant="body2" gutterBottom>
-          <Chip
-            size="medium"
-            color="success"
-            label={`تعداد کالاهای ثبت شده: ${data?.data?.totalQuantity}`}
-          />
-        </Typography>
+        <Chip
+          size="medium"
+          color="success"
+          label={`تعداد کالاهای ثبت شده: ${data?.data?.totalQuantity}`}
+        />
       </Grid>
-      {data?.data?.items?.map((item: any, index: number) => (
-        <Grid size={{ xs: 12 }} key={index}>
-          <Card variant="outlined" sx={{ borderRadius: 1 }}>
-            <CardContent sx={{ gap: 2 }}>
-              <Typography variant="body2" color="text.secondary">
-                ثبت شده توسط: {item.operator}
-              </Typography>
+
+      {data.data.items.map((item: IProductItem) => (
+        <Grid size={{ xs: 12 }} key={item.stockTakingId}>
+          <Card variant="outlined">
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+            >
               <Typography variant="body2" color="text.secondary">
                 نام کالا: {item.name}
+              </Typography>
+              <IconButton
+                onClick={() => handleDelete(item)}
+                sx={{
+                  bgcolor: "error.main",
+                  color: "white",
+                  "&:hover": { bgcolor: "error.dark" },
+                }}
+                size="small"
+              >
+                <DeleteIcon fontSize="small" />
+              </IconButton>
+            </Box>
+
+            <CardContent
+              sx={{ display: "flex", flexDirection: "column", gap: 1 }}
+            >
+              <Typography variant="body2" color="text.secondary">
+                ثبت شده توسط: {item.operator}
               </Typography>
               <Box
                 display="flex"
@@ -71,7 +111,7 @@ const ProductsList: FC<ProductsListProps> = ({ barcode }) => {
                 <Typography variant="body2" color="text.secondary">
                   برند: {item.brand}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="button" color="text.secondary">
                   قیمت: {item.price.toLocaleString()} ریال
                 </Typography>
               </Box>

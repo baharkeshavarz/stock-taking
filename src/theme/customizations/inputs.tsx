@@ -204,61 +204,61 @@ export const inputsCustomizations: Components<Theme> = {
       }),
     },
   },
-  MuiIconButton: {
-    styleOverrides: {
-      root: ({ theme }) => ({
-        boxShadow: "none",
-        borderRadius: (theme.vars || theme).shape.borderRadius,
-        textTransform: "none",
-        fontWeight: theme.typography.fontWeightMedium,
-        letterSpacing: 0,
-        color: (theme.vars || theme).palette.text.primary,
-        border: "1px solid ",
-        borderColor: brand[200],
-        backgroundColor: alpha(brand[50], 0.3),
-        "&:hover": {
-          backgroundColor: brand[100],
-          borderColor: brand[300],
-        },
-        "&:active": {
-          backgroundColor: brand[200],
-        },
-        ...theme.applyStyles("dark", {
-          backgroundColor: brand[800],
-          borderColor: brand[700],
-          "&:hover": {
-            backgroundColor: brand[900],
-            borderColor: brand[600],
-          },
-          "&:active": {
-            backgroundColor: brand[900],
-          },
-        }),
-        variants: [
-          {
-            props: {
-              size: "small",
-            },
-            style: {
-              width: "2.25rem",
-              height: "2.25rem",
-              padding: "0.25rem",
-              [`& .${svgIconClasses.root}`]: { fontSize: "1rem" },
-            },
-          },
-          {
-            props: {
-              size: "medium",
-            },
-            style: {
-              width: "2.5rem",
-              height: "2.5rem",
-            },
-          },
-        ],
-      }),
-    },
-  },
+  // MuiIconButton: {
+  //   styleOverrides: {
+  //     root: ({ theme }) => ({
+  //       boxShadow: "none",
+  //       borderRadius: (theme.vars || theme).shape.borderRadius,
+  //       textTransform: "none",
+  //       fontWeight: theme.typography.fontWeightMedium,
+  //       letterSpacing: 0,
+  //       color: (theme.vars || theme).palette.text.primary,
+  //       border: "1px solid ",
+  //       borderColor: brand[200],
+  //       backgroundColor: alpha(brand[50], 0.3),
+  //       "&:hover": {
+  //         backgroundColor: brand[100],
+  //         borderColor: brand[300],
+  //       },
+  //       "&:active": {
+  //         backgroundColor: brand[200],
+  //       },
+  //       ...theme.applyStyles("dark", {
+  //         backgroundColor: brand[800],
+  //         borderColor: brand[700],
+  //         "&:hover": {
+  //           backgroundColor: brand[900],
+  //           borderColor: brand[600],
+  //         },
+  //         "&:active": {
+  //           backgroundColor: brand[900],
+  //         },
+  //       }),
+  //       variants: [
+  //         {
+  //           props: {
+  //             size: "small",
+  //           },
+  //           style: {
+  //             width: "2.25rem",
+  //             height: "2.25rem",
+  //             padding: "0.25rem",
+  //             [`& .${svgIconClasses.root}`]: { fontSize: "1rem" },
+  //           },
+  //         },
+  //         {
+  //           props: {
+  //             size: "medium",
+  //           },
+  //           style: {
+  //             width: "2.5rem",
+  //             height: "2.5rem",
+  //           },
+  //         },
+  //       ],
+  //     }),
+  //   },
+  // },
   MuiToggleButtonGroup: {
     styleOverrides: {
       root: ({ theme }) => ({
