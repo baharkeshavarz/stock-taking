@@ -5,6 +5,7 @@ import { DEFAULT_SCAN_CODE_ROUTE } from "src/constants";
 import { Link } from "react-router";
 
 const ToolbarComponent = () => {
+  const metadata = JSON.parse(localStorage.getItem("metadata") || "{}");
   return (
     <Toolbar
       sx={{
@@ -26,7 +27,7 @@ const ToolbarComponent = () => {
         />
         <Box>
           <Typography variant="subtitle2" fontWeight={600}>
-            کاربر میهمان
+            {metadata?.name || "کاربر میهمان"}
           </Typography>
         </Box>
       </Box>

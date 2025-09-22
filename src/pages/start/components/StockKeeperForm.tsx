@@ -11,6 +11,7 @@ import { useState } from "react";
 
 const StockKeeperForm = () => {
   const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const labels: Record<keyof StockKeeperPayload, string> = {
@@ -26,11 +27,15 @@ const StockKeeperForm = () => {
   });
 
   const { handleSubmit } = methods;
-  const onSubmit: SubmitHandler<StockKeeperPayload> = async () => {
+  const onSubmit: SubmitHandler<StockKeeperPayload> = async (payload) => {
     setIsLoading(true);
-    setTimeout(() => {
-      navigate(DEFAULT_SCAN_CODE_ROUTE);
-    }, 2000);
+
+    const metadata = JSON.parse(localStorage.getItem("metadata") || "{}");
+    localStorage.setItem(
+      "metadata",
+      JSON.stringify({ ...metadata, name: payload.name })
+    );
+    navigate(DEFAULT_SCAN_CODE_ROUTE);
   };
 
   return (

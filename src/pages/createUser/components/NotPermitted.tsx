@@ -1,8 +1,7 @@
-import { Container, Stack } from "@mui/material";
+import { Alert, Container, Stack } from "@mui/material";
 import HimartLogo from "src/components/icons/HimartLogo";
-import StockKeeperForm from "./components/StockKeeperForm";
 
-function Entrance() {
+const NotPermitted = () => {
   return (
     <Container
       maxWidth="sm"
@@ -10,7 +9,7 @@ function Entrance() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "center",
         bgcolor: "#fafafa",
         backgroundImage: `linear-gradient(rgba(230, 247, 255, 0.98), rgba(247, 242, 242, 0.92)), url("/stock-background.svg")`,
         backgroundRepeat: "no-repeat",
@@ -34,9 +33,11 @@ function Entrance() {
           alt="اپلیکیشن انبارگردانی هایمارت"
         />
       </Stack>
-      <StockKeeperForm />
+      <Alert severity="error" variant="outlined" sx={{ mt: 4 }}>
+        شما اجازه این کار را ندارید و یا انبارگردانی غیر فعال است
+      </Alert>
     </Container>
   );
-}
+};
 
-export default Entrance;
+export default NotPermitted;

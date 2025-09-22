@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import { Outlet } from "react-router";
-
 import { Container } from "@mui/material";
 import BottomNavigationComponent from "src/pages/newscan/components/BottomNavigationComponent";
 import ToolbarComponent from "src/pages/newscan/components/ToolbarComponent";
