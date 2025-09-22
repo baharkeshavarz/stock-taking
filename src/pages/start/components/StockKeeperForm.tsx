@@ -11,7 +11,6 @@ import type { StockKeeperPayload } from "src/services/stockkeeper/types";
 
 const StockKeeperForm = () => {
   const navigate = useNavigate();
-
   const [isLoading, setIsLoading] = useState(false);
 
   const labels: Record<keyof StockKeeperPayload, string> = {

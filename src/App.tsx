@@ -9,6 +9,7 @@ import router from "./router";
 import ThemeProvider from "./theme/ThemeProvider";
 import i18nInstance from "./i18n/i18n";
 import { persister, store } from "./store";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <LanguageProvider>
               <ThemeProvider>
                 <RTLProvider>
+                  <Toaster />
                   <RouterProvider router={router} />
                 </RTLProvider>
               </ThemeProvider>

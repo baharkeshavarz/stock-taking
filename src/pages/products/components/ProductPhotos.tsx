@@ -1,7 +1,17 @@
 import { type FC, useState } from "react";
-import { Box, Card, CardMedia, Grid, Modal, IconButton } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardMedia,
+  Grid,
+  Modal,
+  IconButton,
+  CardContent,
+  Typography,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { DEFAULT_LOGO_PATH } from "src/constants";
+import { Photo } from "@mui/icons-material";
 
 type ProductPhotosProps = {
   photos: string[];
@@ -9,62 +19,56 @@ type ProductPhotosProps = {
 
 const ProductPhotos: FC<ProductPhotosProps> = ({ photos }) => {
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
-
   const placeholder = DEFAULT_LOGO_PATH;
-
   const hasPhotos = photos && photos.length > 0;
 
   return (
     <>
-      {hasPhotos ? (
-        <Grid container spacing={2}>
-          {photos.map((photo, index) => (
-            <Grid size={{ xs: 6, sm: 4, md: 3 }} key={index}>
-              <Card
-                sx={{
-                  cursor: "pointer",
-                  borderRadius: 2,
-                  overflow: "hidden",
-                  height: 100,
-                }}
-                onClick={() => setSelectedPhoto(photo)}
-              >
-                <CardMedia
-                  component="img"
-                  image={photo}
-                  alt={`عکس ${index + 1}`}
-                  sx={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              </Card>
+      <Card variant="outlined" sx={{ borderRadius: 1.5 }}>
+        <CardContent>
+          {hasPhotos ? (
+            <Grid container spacing={2}>
+              {photos.map((photo, index) => (
+                <Grid size={{ xs: 6, sm: 4, md: 3 }} key={index}>
+                  <Card
+                    sx={{
+                      cursor: "pointer",
+                      borderRadius: 2,
+                      overflow: "hidden",
+                      height: 100,
+                    }}
+                    onClick={() => setSelectedPhoto(photo)}
+                  >
+                    <CardMedia
+                      component="img"
+                      image={photo}
+                      alt={`عکس ${index + 1}`}
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </Card>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      ) : (
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          height={150}
-        >
-          <Card
-            sx={{
-              width: 150,
-              height: 80,
-              borderRadius: 2,
-              overflow: "hidden",
-              cursor: "pointer",
-            }}
-            onClick={() => setSelectedPhoto(placeholder)}
-          >
-            <CardMedia
-              component="img"
-              image={placeholder}
-              alt="Placeholder"
-              sx={{ width: "100%", height: "100%", objectFit: "contain" }}
-            />
-          </Card>
-        </Box>
-      )}
+          ) : (
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              flexDirection="column"
+              gap={0.5}
+            >
+              <Photo sx={{ fontSize: 36 }} />
+              <Typography variant="body2" color="text.secondary">
+                تصویری برای این محصول موجود نیست
+              </Typography>
+            </Box>
+          )}
+        </CardContent>
+      </Card>
 
       {/* Modal for full-size image */}
       <Modal
@@ -103,7 +107,11 @@ const ProductPhotos: FC<ProductPhotosProps> = ({ photos }) => {
             component="img"
             image={selectedPhoto || placeholder}
             alt="Selected product"
-            sx={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
+            sx={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              objectFit: "contain",
+            }}
           />
         </Box>
       </Modal>
