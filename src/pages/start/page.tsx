@@ -7,7 +7,7 @@ function Entrance() {
     <Container
       maxWidth="sm"
       sx={{
-        height: "100%", // match parent
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -21,7 +21,7 @@ function Entrance() {
       <Stack
         spacing={4}
         alignItems="center"
-        pt={4}
+        mt={4}
         justifyContent="center"
         width="100%"
       >
