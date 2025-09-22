@@ -3,12 +3,15 @@ import { toast } from "react-hot-toast";
 import { DEFAULT_START_ROUTE } from "src/constants";
 
 const metadata = JSON.parse(localStorage.getItem("metadata") || "{}");
+export const baseUrl = import.meta.env.DEV
+  ? ""
+  : import.meta.env.VITE_SHOP_GATEWAY_URL;
 
 export const axiosInstance = axios.create({
   headers: {
     token: metadata?.key,
   },
-  baseURL: import.meta.env.VITE_SHOP_GATEWAY_URL || "api",
+  baseURL: baseUrl,
 });
 
 axiosInstance.defaults.timeout = 60000;

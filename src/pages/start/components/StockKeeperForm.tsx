@@ -1,5 +1,4 @@
 import { Box, Stack } from "@mui/material";
-import type { StockKeeperPayload } from "src/services/products/types";
 import * as yup from "yup";
 import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,6 +7,7 @@ import { useNavigate } from "react-router";
 import { DEFAULT_SCAN_CODE_ROUTE } from "src/constants";
 import ButtonWithLoading from "src/components/common/ButtonWithLoading";
 import { useState } from "react";
+import type { StockKeeperPayload } from "src/services/stockkeeper/types";
 
 const StockKeeperForm = () => {
   const navigate = useNavigate();
