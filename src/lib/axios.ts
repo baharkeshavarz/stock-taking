@@ -2,7 +2,15 @@ import axios, { AxiosError } from "axios";
 import { toast } from "react-hot-toast";
 import { DEFAULT_START_ROUTE } from "src/constants";
 
-export const axiosInstance = axios.create();
+const metadata = JSON.parse(localStorage.getItem("metadata") || "{}");
+
+export const axiosInstance = axios.create({
+  headers: {
+    token: metadata?.key,
+  },
+  baseURL: import.meta.env.VITE_SHOP_GATEWAY_URL || "api",
+});
+
 axiosInstance.defaults.timeout = 60000;
 
 axiosInstance.interceptors.request.use(
@@ -49,10 +57,6 @@ axiosInstance.interceptors.response.use(null, (error: AxiosError<any>) => {
 
   return Promise.reject(error);
 });
-
-export const baseUrl = import.meta.env.DEV
-  ? ""
-  : import.meta.env.VITE_SHOP_GATEWAY_URL;
 
 export const headers = {
   contentType: {

@@ -1,4 +1,5 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
+
 import { analyzer } from "vite-bundle-analyzer";
 import react from "@vitejs/plugin-react";
 import { VitePWA, type VitePWAOptions } from "vite-plugin-pwa";
@@ -43,14 +44,25 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
   },
 };
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  base: "./",
-  resolve: {
-    alias: {
-      "@": "/src",
-      src: "/src",
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  return {
+    base: "./",
+    resolve: {
+      alias: {
+        "@": "/src",
+        src: "/src",
+      },
     },
-  },
-  plugins: [react(), analyzer(), VitePWA(manifestForPlugin)],
+    server: {
+      proxy: {
+        "/g/shop": {
+          target: env.VITE_SHOP_GATEWAY_URL,
+          changeOrigin: true,
+          secure: false,
+        },
+      },
+    },
+    plugins: [react(), analyzer(), VitePWA(manifestForPlugin)],
+  };
 });
