@@ -1,4 +1,3 @@
-import SearchIcon from "@mui/icons-material/Search";
 import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
 import { useState } from "react";
 import { BarcodeReader, Home, Person } from "@mui/icons-material";
@@ -8,12 +7,11 @@ const BottomNavigationComponent = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Determine current value based on pathname
   const getCurrentValue = () => {
     if (location.pathname.includes("/scan")) return 0;
     if (location.pathname === "/") return 1;
-    if (location.pathname.includes("/search")) return 2;
-    return 1; // default to home
+    if (location.pathname.includes("/settings")) return 2;
+    return 1;
   };
 
   const [value, setValue] = useState(getCurrentValue());

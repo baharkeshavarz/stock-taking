@@ -7,7 +7,6 @@ import {
   Card,
   CardContent,
   Typography,
-  CircularProgress,
   Box,
   Chip,
   IconButton,

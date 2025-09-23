@@ -1,4 +1,4 @@
-import type { Basic, List, Response } from "../types/common";
+import type { Basic, Response } from "../types/common";
 
 export interface IBarcode {
   barcode: string;
