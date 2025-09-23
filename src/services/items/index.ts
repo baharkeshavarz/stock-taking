@@ -18,5 +18,5 @@ export const addProduct: AddProductService = ({ payload }) => {
 };
 
 export const removeProduct: RemoveProductService = ({ payload }) => {
-  return axiosInstance.delete(`${BASE_URL}/items/remove`, payload);
+  return axiosInstance.delete(`${BASE_URL}/items/remove`, { data: payload });
 };

@@ -20,10 +20,10 @@ const ConfirmAlertProvider: FC<PropsWithChildren> = ({ children }) => {
         variant: "contained",
         color: "error",
       },
-      confirmationText: "بله",
       cancellationText: "خیر",
+      confirmationText: "بله",
 
-      title: "آیا مطمثن هستید؟",
+      title: "آیا مطمئن هستید؟",
       dialogProps: {
         PaperProps: {
           sx: {

@@ -1,5 +1,7 @@
 import { type FC } from "react";
-import useGetItemsByBarcode from "../hooks/useGetItemsByBarcode";
+import useGetItemsByBarcode, {
+  GET_PRODUCT_ITEMS_BY_BARCODE,
+} from "../hooks/useGetItemsByBarcode";
 import {
   Grid,
   Card,
@@ -15,6 +17,9 @@ import { useMutation } from "@tanstack/react-query";
 import { removeProduct } from "src/services/items";
 import type { IProductItem } from "src/services/items/types";
 import { useConfirm } from "material-ui-confirm";
+import { HttpStatusCode } from "axios";
+import toast from "react-hot-toast";
+import { queryClient } from "src/providers/TanstackProvider";
 
 type ProductsListProps = {
   barcode: string;
@@ -23,19 +28,28 @@ type ProductsListProps = {
 const ProductsList: FC<ProductsListProps> = ({ barcode }) => {
   const confirm = useConfirm();
   const { data, isPending, isError } = useGetItemsByBarcode(barcode);
+
   const { mutateAsync } = useMutation({
     mutationFn: removeProduct,
+    onSuccess: () => {
+      queryClient.refetchQueries({
+        queryKey: [GET_PRODUCT_ITEMS_BY_BARCODE],
+      });
+    },
   });
 
   const handleDelete = async (item: IProductItem) => {
-    console.log(item);
     confirm().then(async () => {
-      await mutateAsync({
+      const { data, status } = await mutateAsync({
         payload: {
-          stockTakingItemId: item.stockTakingId,
+          stockTakingItemId: item.stockTakingItemId,
           operator: item.operator,
         },
       });
+
+      if (status === HttpStatusCode.Ok && data?.succeeded) {
+        toast.success(`کالای شما با کد ${item.stockTakingItemId} حذف شد`);
+      }
     });
   };
 

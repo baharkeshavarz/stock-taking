@@ -26,7 +26,7 @@ const ProductNotFound = () => {
       >
         <Stack spacing={2} alignItems="center">
           <ErrorOutlineIcon sx={{ fontSize: 50, color: "error.main" }} />
-          <Typography variant="h6" fontWeight="bold">
+          <Typography variant="h6" fontWeight="bold" color="text.secondary">
             محصولی با بارکد موردنظر یافت نشد
           </Typography>
           <Typography variant="body2" color="text.secondary">

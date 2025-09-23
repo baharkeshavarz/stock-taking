@@ -3,7 +3,6 @@ import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import { outlinedInputClasses } from "@mui/material/OutlinedInput";
 import { alpha, type Components, type Theme } from "@mui/material/styles";
-import { svgIconClasses } from "@mui/material/SvgIcon";
 import { toggleButtonClasses } from "@mui/material/ToggleButton";
 import { toggleButtonGroupClasses } from "@mui/material/ToggleButtonGroup";
 import { brand, gray } from "../themePrimitives";
@@ -17,6 +16,7 @@ export const inputsCustomizations: Components<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         boxSizing: "border-box",
+        fontFamily: "YekanBakh !important",
         transition: "all 100ms ease-in",
         "&:focus-visible": {
           outline: `3px solid ${alpha(theme.palette.primary.main, 0.5)}`,
