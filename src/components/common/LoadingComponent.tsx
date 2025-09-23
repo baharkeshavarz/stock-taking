@@ -15,8 +15,13 @@ const LoadingComponent = () => {
     <>
       <Dialog open maxWidth="sm">
         <DialogTitle sx={{ textAlign: "center" }}>
-          <HimartLogo />
-          <Typography variant="h6" fontWeight={600} mt={3}>
+          <HimartLogo size="medium" />
+          <Typography
+            variant="body2"
+            fontWeight={600}
+            color="text.primary"
+            mt={3.5}
+          >
             انبارگردانی هایمارت
           </Typography>
         </DialogTitle>

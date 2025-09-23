@@ -1,5 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { Box, TextField, Button, Typography, Paper } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Paper,
+  alpha,
+} from "@mui/material";
 import { CameraAlt, Stop, PlayArrow, Search } from "@mui/icons-material";
 import Scanner from "./Scanner";
 import LinearFieldset from "./common/LinearFieldset";
@@ -18,7 +25,6 @@ const BarcodeScanner = () => {
       setText("");
       console.log("Manual barcode entered:", inputText);
     }
-    //  router.push(`items/${inputText}/`).then(() => setText("setText"));
   };
 
   const [results, setResults] = useState<string[]>([]);
@@ -31,7 +37,6 @@ const BarcodeScanner = () => {
       setResults((prev) => [...prev, result]);
       console.log("Scanned code added:", result);
     }
-    // router.push(`items/${result}/`);
   };
 
   const onScannerReady = () => {
@@ -53,8 +58,11 @@ const BarcodeScanner = () => {
     console.log(results);
   }, [results]);
   return (
-    <Box sx={{ p: 2 }}>
-      {/* Scanner Area */}
+    <Box
+      p={3}
+      borderRadius={2}
+      bgcolor={(theme) => alpha(theme.palette.common.white, 0.5)}
+    >
       <Box
         ref={scannerRef}
         sx={{
@@ -113,7 +121,6 @@ const BarcodeScanner = () => {
         )}
       </Box>
 
-      {/* Control Buttons */}
       <Box sx={{ display: "flex", gap: 2, justifyContent: "center", mt: 2 }}>
         <Button
           variant={isScanning ? "contained" : "outlined"}
@@ -127,7 +134,6 @@ const BarcodeScanner = () => {
         </Button>
       </Box>
 
-      {/* Scanner Component */}
       {isScanning && (
         <Scanner
           scannerRef={scannerRef}
@@ -155,7 +161,6 @@ const BarcodeScanner = () => {
         />
       )}
 
-      {/* Results Display */}
       {data.value && (
         <Paper elevation={2} sx={{ p: 2, my: 2, bgcolor: "success.light" }}>
           <Typography variant="h6" color="success.contrastText" gutterBottom>
@@ -170,7 +175,6 @@ const BarcodeScanner = () => {
         </Paper>
       )}
 
-      {/* Manual Input Section */}
       <Box
         sx={{
           display: "flex",

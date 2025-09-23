@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { toast } from "react-hot-toast";
-import { DEFAULT_START_ROUTE } from "src/constants";
+import { DEFAULT_STOCK_KEEPER_ROUTE } from "src/constants";
 
 const metadata = JSON.parse(localStorage.getItem("metadata") || "{}");
 export const baseUrl = import.meta.env.DEV
@@ -35,7 +35,7 @@ axiosInstance.interceptors.response.use(null, (error: AxiosError<any>) => {
 
   if (status === 401 || status === 403) {
     localStorage.removeItem("token");
-    window.location.href = DEFAULT_START_ROUTE;
+    window.location.href = DEFAULT_STOCK_KEEPER_ROUTE;
     return Promise.reject(error);
   }
 

@@ -3,7 +3,7 @@ import { useColorScheme } from "@mui/material/styles";
 import { type SxProps, type Theme } from "@mui/system";
 import type { FC } from "react";
 import { Link } from "react-router";
-import { DEFAULT_START_ROUTE } from "src/constants";
+import { DEFAULT_STOCK_KEEPER_ROUTE } from "src/constants";
 
 export type LogoStyle = "default" | "dark";
 
@@ -51,7 +51,7 @@ const HimartLogo: FC<HimartLogoProps> = ({
 
   return (
     <Stack spacing={2.5} sx={{ textAlign: "center" }}>
-      <Link to={DEFAULT_START_ROUTE}>
+      <Link to={DEFAULT_STOCK_KEEPER_ROUTE}>
         <Box
           component="img"
           src={logoPathMap[themedStyle]}

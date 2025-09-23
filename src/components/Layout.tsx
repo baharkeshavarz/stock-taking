@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import { Outlet } from "react-router";
 import { Container } from "@mui/material";
 import BottomNavigationComponent from "src/components/common/BottomNavigationComponent";
-import ToolbarComponent from "src/pages/newscan/components/ToolbarComponent";
+import ToolbarComponent from "src/components/common/ToolbarComponent";
 
 const Layout = () => {
   return (

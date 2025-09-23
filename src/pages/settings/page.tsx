@@ -5,13 +5,21 @@ import {
   Card,
   CardContent,
   IconButton,
-  Typography,
   Stack,
   alpha,
+  Typography,
 } from "@mui/material";
+import { useNavigate } from "react-router";
+import { DEFAULT_START_ROUTE } from "src/constants";
 
 const Settings = () => {
+  const navigate = useNavigate();
   const metadata = JSON.parse(localStorage.getItem("metadata") || "{}");
+
+  const handleLogout = () => {
+    localStorage.removeItem("metadata");
+    navigate(DEFAULT_START_ROUTE);
+  };
 
   return (
     <Box
@@ -45,7 +53,7 @@ const Settings = () => {
           </Typography>
         </Box>
 
-        <IconButton>
+        <IconButton onClick={handleLogout}>
           <ExitToAppOutlined sx={{ fontSize: 30, color: "grey.500" }} />
         </IconButton>
       </Box>
