@@ -18,6 +18,7 @@ import toast from "react-hot-toast";
 import { getProductBarcode } from "src/services/products";
 import LinearFieldset from "src/components/common/LinearFieldset";
 import ProductsList from "./components/ProductsList";
+import ProductsPageSkeleton from "./components/ProductsPageSkeleton";
 
 type StockProductPayload = Omit<IAddProduct, "operator">;
 
@@ -86,7 +87,11 @@ const Products = () => {
     }
   }, [barcode, navigate]);
 
-  if (isPending || isPendingInsert) {
+  if (isPending) {
+    return <ProductsPageSkeleton />;
+  }
+
+  if (isPendingInsert) {
     return <LoadingComponent />;
   }
 
@@ -175,7 +180,7 @@ const Products = () => {
                     variant="contained"
                     size="large"
                     fullWidth
-                    loading={isPending || isPendingInsert}
+                    loading={isPendingInsert}
                   >
                     ثبت کالا
                   </ButtonWithLoading>

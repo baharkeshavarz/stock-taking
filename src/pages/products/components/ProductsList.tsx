@@ -20,6 +20,7 @@ import { useConfirm } from "material-ui-confirm";
 import { HttpStatusCode } from "axios";
 import toast from "react-hot-toast";
 import { queryClient } from "src/providers/TanstackProvider";
+import ProductsListSkeleton from "./ProductsListSkeleton";
 
 type ProductsListProps = {
   barcode: string;
@@ -54,11 +55,7 @@ const ProductsList: FC<ProductsListProps> = ({ barcode }) => {
   };
 
   if (isPending) {
-    return (
-      <Box display="flex" justifyContent="center" alignItems="center" p={4}>
-        <CircularProgress />
-      </Box>
-    );
+    return <ProductsListSkeleton />;
   }
 
   if (isError) {
@@ -72,7 +69,9 @@ const ProductsList: FC<ProductsListProps> = ({ barcode }) => {
   if (!data?.data?.items || data?.data?.items.length === 0) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" p={4}>
-        <Typography>هیچ آیتمی برای این بارکد یافت نشد</Typography>
+        <Typography variant="body1" color="text.primary">
+          هیچ آیتمی برای این بارکد یافت نشد!
+        </Typography>
       </Box>
     );
   }
