@@ -1,7 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
 import { useState } from "react";
-import { BarcodeReader, Home } from "@mui/icons-material";
+import { BarcodeReader, Home, Person } from "@mui/icons-material";
 import { useNavigate, useLocation } from "react-router";
 
 const BottomNavigationComponent = () => {
@@ -28,7 +28,7 @@ const BottomNavigationComponent = () => {
         navigate("/start");
         break;
       case 2:
-        navigate("/search");
+        navigate("/settings");
         break;
       default:
         navigate("/");
@@ -64,8 +64,8 @@ const BottomNavigationComponent = () => {
           }}
         />
         <BottomNavigationAction
-          label="جستجو"
-          icon={<SearchIcon />}
+          label="پروفایل من"
+          icon={<Person />}
           sx={{
             "& .MuiSvgIcon-root": {
               fontSize: 32,

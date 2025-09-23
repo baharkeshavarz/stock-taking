@@ -2,9 +2,8 @@ import Box from "@mui/material/Box";
 import { Outlet } from "react-router";
 import { Container } from "@mui/material";
 import BottomNavigationComponent from "src/components/common/BottomNavigationComponent";
-import ToolbarComponent from "src/pages/newscan/components/ToolbarComponent";
 
-const Layout = () => {
+const SettingsLayout = () => {
   return (
     <Box
       sx={{
@@ -14,22 +13,6 @@ const Layout = () => {
         minHeight: "100vh",
       }}
     >
-      <Container
-        maxWidth="sm"
-        sx={{
-          position: "sticky",
-          top: 0,
-          zIndex: 1100,
-          flexShrink: 0,
-          backgroundColor: "white",
-          borderBottom: "1px solid",
-          borderColor: "divider",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <ToolbarComponent />
-      </Container>
       <Box
         sx={{
           flex: 1,
@@ -78,4 +61,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default SettingsLayout;

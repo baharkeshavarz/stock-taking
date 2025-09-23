@@ -6,8 +6,10 @@ const Entrance = lazy(() => import("./pages/start/page"));
 const ScanCode = lazy(() => import("./pages/newscan/page"));
 const Layout = lazy(() => import("src/components/Layout"));
 const EntranceLayout = lazy(() => import("src/components/EntranceLayout"));
+const SettingsLayout = lazy(() => import("src/components/SettingsLayout"));
 const Products = lazy(() => import("./pages/products/page"));
 const CreateUser = lazy(() => import("./pages/createUser/page"));
+const Settings = lazy(() => import("./pages/settings/page"));
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,16 @@ const router = createBrowserRouter([
       {
         path: "/create_user",
         Component: CreateUser,
+      },
+    ],
+  },
+  {
+    path: "",
+    Component: SettingsLayout,
+    children: [
+      {
+        path: "/settings",
+        Component: Settings,
       },
     ],
   },
