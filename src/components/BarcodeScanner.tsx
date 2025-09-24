@@ -22,6 +22,7 @@ const BarcodeScanner = () => {
   const startHandler = (inputText: string) => {
     if (inputText.trim()) {
       //setResults((prev) => [...prev, inputText]);
+      navigate(`${DEFAULT_ITEMS_ROUTE}/${inputText.trim()}`);
       setText("");
     }
   };
