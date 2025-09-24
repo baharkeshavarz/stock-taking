@@ -144,8 +144,8 @@ const BarcodeScanner = () => {
           cameraId={undefined}
           facingMode="environment"
           constraints={{
-            width: 320,
-            height: 240,
+            width: 1920,
+            height: 1080,
           }}
           decoders={[
             "code_128_reader",
