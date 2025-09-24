@@ -59,7 +59,7 @@ const BarcodeScanner = () => {
   }, [results]);
   return (
     <Box
-      p={3}
+      p={2}
       borderRadius={2}
       bgcolor={(theme) => alpha(theme.palette.common.white, 0.5)}
     >
@@ -180,7 +180,7 @@ const BarcodeScanner = () => {
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
-          gap: 2,
+          gap: 1,
           mt: 2,
         }}
       >

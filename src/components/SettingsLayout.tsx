@@ -8,9 +8,10 @@ const SettingsLayout = () => {
     <Box
       sx={{
         width: "100%",
+        height: "100dvh",
         display: "flex",
         flexDirection: "column",
-        minHeight: "100vh",
+        overflow: "hidden",
       }}
     >
       <Box

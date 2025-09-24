@@ -45,6 +45,7 @@ const Settings = () => {
               height: 65,
               bgcolor: "primary.light",
               fontSize: "1rem",
+              boxShadow: 3,
             }}
             src="/avatar-sample-2.png"
           />
@@ -71,6 +72,7 @@ const Settings = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  boxShadow: 4,
                 }}
               >
                 <WhatsApp sx={{ color: "white", fontSize: 28 }} />
@@ -108,6 +110,7 @@ const Settings = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  boxShadow: 4,
                 }}
               >
                 <Phone sx={{ color: "white", fontSize: 28 }} />

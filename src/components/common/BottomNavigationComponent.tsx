@@ -2,6 +2,11 @@ import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
 import { useState } from "react";
 import { BarcodeReader, Home, Person } from "@mui/icons-material";
 import { useNavigate, useLocation } from "react-router";
+import {
+  DEFAULT_SCAN_CODE_ROUTE,
+  DEFAULT_SETTING_ROUTE,
+  DEFAULT_STOCK_KEEPER_ROUTE,
+} from "src/constants";
 
 const BottomNavigationComponent = () => {
   const navigate = useNavigate();
@@ -20,13 +25,13 @@ const BottomNavigationComponent = () => {
     setValue(newValue);
     switch (newValue) {
       case 0:
-        navigate("/scan-code");
+        navigate(DEFAULT_SCAN_CODE_ROUTE);
         break;
       case 1:
-        navigate("/start");
+        navigate(DEFAULT_STOCK_KEEPER_ROUTE);
         break;
       case 2:
-        navigate("/settings");
+        navigate(DEFAULT_SETTING_ROUTE);
         break;
       default:
         navigate("/");

@@ -11,6 +11,7 @@ import i18nInstance from "./i18n/i18n";
 import { persister, store } from "./store";
 import { Toaster } from "react-hot-toast";
 import ConfirmProvider from "./providers/ConfirmProvider";
+import { CssBaseline } from "@mui/material";
 
 function App() {
   return (
@@ -20,10 +21,11 @@ function App() {
           <TanstackProvider>
             <LanguageProvider>
               <ThemeProvider>
+                <CssBaseline />
                 <ConfirmProvider>
                   <RTLProvider>
-                    <Toaster />
                     <RouterProvider router={router} />
+                    <Toaster />
                   </RTLProvider>
                 </ConfirmProvider>
               </ThemeProvider>

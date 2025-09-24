@@ -26,11 +26,10 @@ const LinearFieldset: FC<LinearFieldsetProps> = ({
   ...props
 }) => {
   return (
-    <Box display="flex" alignItems="center" width="100%" m={1} p={1.2}>
+    <Box display="flex" alignItems="center" width="100%" p={1}>
       <Line />
       <Typography
         sx={{
-          px: 1,
           fontWeight: 600,
           fontSize: titleSize,
           color: lineColor,
