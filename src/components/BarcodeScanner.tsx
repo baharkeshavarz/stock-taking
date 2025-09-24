@@ -21,19 +21,19 @@ const BarcodeScanner = () => {
 
   const startHandler = (inputText: string) => {
     if (inputText.trim()) {
-      setResults((prev) => [...prev, inputText]);
+      //setResults((prev) => [...prev, inputText]);
       setText("");
     }
   };
 
-  const [results, setResults] = useState<string[]>([]);
+  //const [results, setResults] = useState<string[]>([]);
   const scannerRef = useRef<HTMLDivElement>(null);
 
   const onDetected = (result: string) => {
     console.log("Scanner detected:", result);
     if (result && result !== data.value) {
       setData({ value: result });
-      setResults((prev) => [...prev, result]);
+      // setResults((prev) => [...prev, result]);
       console.log("Scanned code added:", result);
     }
   };
