@@ -8,6 +8,7 @@ import { DEFAULT_STOCK_KEEPER_ROUTE } from "src/constants";
 
 const CreateUser = () => {
   const navigate = useNavigate();
+  // TODO: make it reverse
   // const [searchParams] = useSearchParams();
   // const k = searchParams.get("k");
 

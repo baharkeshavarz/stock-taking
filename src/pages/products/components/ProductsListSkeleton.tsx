@@ -46,3 +46,4 @@ const ProductsListSkeleton = () => {
 };
 
 export default ProductsListSkeleton;
+

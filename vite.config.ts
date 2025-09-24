@@ -55,6 +55,8 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
+      port: 5173,
+      host: true,
       proxy: {
         "/g/shop": {
           target: env.VITE_SHOP_GATEWAY_URL,

@@ -11,7 +11,7 @@ import * as yup from "yup";
 import { CustomTextField } from "src/components/Fields";
 import type { IAddProduct } from "src/services/items/types";
 import ButtonWithLoading from "src/components/common/ButtonWithLoading";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { addProduct } from "src/services/items";
 import { HttpStatusCode } from "axios";
 import toast from "react-hot-toast";
@@ -19,11 +19,13 @@ import { getProductBarcode } from "src/services/products";
 import LinearFieldset from "src/components/common/LinearFieldset";
 import ProductsList from "./components/ProductsList";
 import ProductsPageSkeleton from "./components/ProductsPageSkeleton";
+import { GET_PRODUCT_ITEMS_BY_BARCODE } from "./hooks/useGetItemsByBarcode";
 
 type StockProductPayload = Omit<IAddProduct, "operator">;
 
 const Products = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { barcode } = useParams();
 
   const { data: productInfo, isPending } = useQuery({
@@ -62,6 +64,11 @@ const Products = () => {
   const { handleSubmit, reset } = methods;
   const { mutateAsync, isPending: isPendingInsert } = useMutation({
     mutationFn: addProduct,
+    onSuccess: () => {
+      queryClient.refetchQueries({
+        queryKey: [GET_PRODUCT_ITEMS_BY_BARCODE],
+      });
+    },
   });
 
   const onSubmit: SubmitHandler<StockProductPayload> = async (payload) => {
@@ -169,10 +176,18 @@ const Products = () => {
                   <CustomTextField label={labels.brand} name="brand" />
                 </Grid>
                 <Grid size={{ xs: 6 }}>
-                  <CustomTextField label={labels.price} name="price" />
+                  <CustomTextField
+                    label={labels.price}
+                    name="price"
+                    type="number"
+                  />
                 </Grid>
                 <Grid size={{ xs: 6 }}>
-                  <CustomTextField label={labels.quantity} name="quantity" />
+                  <CustomTextField
+                    label={labels.quantity}
+                    name="quantity"
+                    type="number"
+                  />
                 </Grid>
                 <Grid size={{ xs: 12 }}>
                   <ButtonWithLoading

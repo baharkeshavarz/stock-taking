@@ -7,7 +7,9 @@ const useGetItemsByBarcode = (barcode: string) => {
   return useQuery({
     queryKey: [GET_PRODUCT_ITEMS_BY_BARCODE, barcode],
     queryFn: async () => {
-      const { data } = await getItemsByBarcode({ params: { barcode } });
+      const { data } = await getItemsByBarcode({
+        params: { barcode },
+      });
 
       return data || [];
     },
