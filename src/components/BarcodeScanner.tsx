@@ -30,7 +30,7 @@ const BarcodeScanner = () => {
   const scannerRef = useRef<HTMLDivElement>(null);
 
   const onDetected = (result: string) => {
-    alert("Scanner detected");
+    alert("Scanner detected in mobile");
     console.log("Scanner detected:", result);
     if (result && result !== data.value) {
       setData({ value: result });
@@ -65,7 +65,7 @@ const BarcodeScanner = () => {
       borderRadius={2}
       bgcolor={(theme) => alpha(theme.palette.common.white, 0.5)}
     >
-      <div>text: {text}</div>
+      <div>text of barcode: {text}</div>
       <div>data: {data?.value}</div>
       <Box
         ref={scannerRef}
