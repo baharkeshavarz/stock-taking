@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import {
   Box,
   TextField,
@@ -30,18 +30,15 @@ const BarcodeScanner = () => {
   const scannerRef = useRef<HTMLDivElement>(null);
 
   const onDetected = (result: string) => {
-    alert("Scanner detected in mobile");
     console.log("Scanner detected:", result);
     if (result && result !== data.value) {
       setData({ value: result });
       setResults((prev) => [...prev, result]);
-      alert("Scanned code added");
       console.log("Scanned code added:", result);
     }
   };
 
   const onScannerReady = () => {
-    alert("Scanner is ready and started");
     console.log("Scanner is ready and started");
   };
 
@@ -56,17 +53,12 @@ const BarcodeScanner = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(results);
-  }, [results]);
   return (
     <Box
       p={2}
       borderRadius={2}
       bgcolor={(theme) => alpha(theme.palette.common.white, 0.5)}
     >
-      <div>text of barcode: {text}</div>
-      <div>data: {data?.value}</div>
       <Box
         ref={scannerRef}
         sx={{

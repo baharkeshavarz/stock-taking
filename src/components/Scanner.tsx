@@ -61,9 +61,7 @@ const Scanner: React.FC<ScannerProps> = ({
       if (!onDetected) {
         return;
       }
-      alert("ok 1");
       const err = getMedianOfCodeErrors(result.codeResult.decodedCodes);
-      alert("ok 2");
       // if Quagga is at least 75% certain that it read correctly, then accept the code.
       if (err < 0.3) {
         onDetected(result.codeResult.code);
@@ -91,13 +89,11 @@ const Scanner: React.FC<ScannerProps> = ({
       },
       (err) => {
         if (err) {
-          alert("Error starting Quagga:");
           return console.log("Error starting Quagga:", err);
         }
         if (scannerRef && scannerRef.current) {
           Quagga.start();
           if (onScannerReady) {
-            alert("onScannerReady");
             onScannerReady();
           }
         }
