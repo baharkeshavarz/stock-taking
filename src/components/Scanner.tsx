@@ -1,6 +1,10 @@
 import { useCallback, useLayoutEffect } from "react";
 import type { RefObject } from "react";
 import Quagga from "@ericblade/quagga2";
+import {
+  defaultScannerConstraints,
+  defaultScannerLocatorSettings,
+} from "src/constants";
 
 function getMedian(arr: number[]): number {
   arr.sort((a, b) => a - b);
@@ -32,16 +36,6 @@ interface ScannerProps {
   locate?: boolean;
 }
 
-const defaultConstraints = {
-  width: 1920,
-  height: 1080,
-};
-
-const defaultLocatorSettings = {
-  patchSize: "medium",
-  halfSample: true,
-};
-
 const defaultDecoders = ["code_128_reader", "ean_reader", "ean_8_reader"];
 
 const Scanner: React.FC<ScannerProps> = ({
@@ -50,8 +44,8 @@ const Scanner: React.FC<ScannerProps> = ({
   onScannerReady,
   cameraId,
   facingMode,
-  constraints = defaultConstraints,
-  locator = defaultLocatorSettings,
+  constraints = defaultScannerConstraints,
+  locator = defaultScannerLocatorSettings,
   numOfWorkers = navigator.hardwareConcurrency || 0,
   decoders = defaultDecoders,
   locate = true,
