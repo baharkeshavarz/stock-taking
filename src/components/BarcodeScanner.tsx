@@ -23,7 +23,6 @@ const BarcodeScanner = () => {
     if (inputText.trim()) {
       setResults((prev) => [...prev, inputText]);
       setText("");
-      console.log("Manual barcode entered:", inputText);
     }
   };
 
@@ -31,15 +30,18 @@ const BarcodeScanner = () => {
   const scannerRef = useRef<HTMLDivElement>(null);
 
   const onDetected = (result: string) => {
+    alert("Scanner detected");
     console.log("Scanner detected:", result);
     if (result && result !== data.value) {
       setData({ value: result });
       setResults((prev) => [...prev, result]);
+      alert("Scanned code added");
       console.log("Scanned code added:", result);
     }
   };
 
   const onScannerReady = () => {
+    alert("Scanner is ready and started");
     console.log("Scanner is ready and started");
   };
 
@@ -63,6 +65,8 @@ const BarcodeScanner = () => {
       borderRadius={2}
       bgcolor={(theme) => alpha(theme.palette.common.white, 0.5)}
     >
+      <div>text: {text}</div>
+      <div>data: {data?.value}</div>
       <Box
         ref={scannerRef}
         sx={{
@@ -120,7 +124,6 @@ const BarcodeScanner = () => {
           </Box>
         )}
       </Box>
-
       <Box sx={{ display: "flex", gap: 2, justifyContent: "center", mt: 2 }}>
         <Button
           variant={isScanning ? "contained" : "outlined"}
@@ -133,7 +136,6 @@ const BarcodeScanner = () => {
           {isScanning ? "توقف اسکن" : "شروع اسکن"}
         </Button>
       </Box>
-
       {isScanning && (
         <Scanner
           scannerRef={scannerRef}
@@ -160,7 +162,6 @@ const BarcodeScanner = () => {
           }}
         />
       )}
-
       {data.value && (
         <Paper elevation={2} sx={{ p: 2, my: 2, bgcolor: "success.light" }}>
           <Typography variant="h6" color="success.contrastText" gutterBottom>
@@ -174,7 +175,6 @@ const BarcodeScanner = () => {
           </Typography>
         </Paper>
       )}
-
       <Box
         sx={{
           display: "flex",
