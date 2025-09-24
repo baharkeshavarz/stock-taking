@@ -21,21 +21,16 @@ const BarcodeScanner = () => {
 
   const startHandler = (inputText: string) => {
     if (inputText.trim()) {
-      //setResults((prev) => [...prev, inputText]);
-      navigate(`${DEFAULT_ITEMS_ROUTE}/${inputText.trim()}`);
       setText("");
     }
   };
 
-  //const [results, setResults] = useState<string[]>([]);
   const scannerRef = useRef<HTMLDivElement>(null);
 
   const onDetected = (result: string) => {
-    console.log("Scanner detected:", result);
     if (result && result !== data.value) {
       setData({ value: result });
-      // setResults((prev) => [...prev, result]);
-      console.log("Scanned code added:", result);
+      navigate(`${DEFAULT_ITEMS_ROUTE}/${result}`);
     }
   };
 
@@ -155,16 +150,13 @@ const BarcodeScanner = () => {
           }}
         />
       )}
-      {data.value && (
-        <Paper elevation={2} sx={{ p: 2, my: 2, bgcolor: "success.light" }}>
-          <Typography variant="h6" color="success.contrastText" gutterBottom>
+      {data?.value && (
+        <Paper elevation={1} sx={{ p: 2, my: 2, bgcolor: "white" }}>
+          <Typography variant="body1" color="text.primary">
             آخرین کد اسکن شده:
           </Typography>
-          <Typography
-            variant="body1"
-            sx={{ fontFamily: "monospace", fontSize: "1.2rem" }}
-          >
-            {data.value}
+          <Typography variant="body1" py={1}>
+            {data?.value}
           </Typography>
         </Paper>
       )}
